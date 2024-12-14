@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <button id="stop">Stop</button>
+</body>
+<script> 
+    const changeText = function(){
+        document.querySelector('h1').innerHTML = "Learning JS"     // after time out this text will be printed
+    }
+
+    const changeMe = setTimeout(changeText, 2000)   // time out function set for 2 seconds [inside the set time out function we have to pass function defination means, we will pass function name but we can't use () after function name]
+
+    document.querySelector('#stop').addEventListener('click', function(){  // if the button is clicked before function execution then execution will be stopped
+        clearTimeout(changeMe)
+        console.log("STOPPED")
+    })
+</script>
+</html>

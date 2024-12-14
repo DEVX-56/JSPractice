@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a new Element</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    
+</body>
+<script>
+    const div = document.createElement('div')    //create a (div) element and store in a variable
+    console.log(div);
+    div.className = "main"   //adding class name 
+    div.id = Math.round(Math.random()*10 + 1)        // adding ID
+    div.setAttribute("title", "generated title")    //set custom attribute using (key, value)  -> [attribute, name]
+    div.style.backgroundColor = "green"
+    div.style.padding = "12px"   //all the changes are inside momery so we can't show them
+    //div.innerText = "its me Rohan"  //This way we can also add (inner text)  ... but in this way JS don't directly set the text ........   Actually they overwrite the text or value first select and bring the previous value then overwrite the value, not optimized
+
+    const addText = document.createTextNode("It's me Rohan")   //Text node has been created ...........  This method direct set the value to given text  ..... so we save one step.
+
+    //                  Now we will add this text node inside div
+    div.appendChild(addText)
+
+    //                                  attach it in document
+    document.body.appendChild(div)     //document will add (div) as child which shown in Diagram  --> now we can show it in webview
+</script>
+</html> 

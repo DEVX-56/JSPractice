@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 4</title>
+</head>
+<body style="background-color: black; color:#fff" >
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    //Add Values in List
+
+    function addLanguage(langName){          //behind the sence, This method creates a Tree and every time traverse the whole tree to add a new Language (Not Optimized Method)
+        const li = document.createElement('li');   //creating new list item
+        li.innerHTML = `${langName}`
+        document.querySelector('.language').appendChild(li)  // language added into list using append child
+    }
+    addLanguage("Python")         //function call
+    addLanguage("TypeScript")
+
+    ///                     Optimized Approach
+    function addLangOptimized(langName){   //here we don't have to traverse full tree
+        const li = document.createElement('li');   //creating new list item
+        li.appendChild(document.createTextNode(langName));
+        document.querySelector('.language').appendChild(li);
+    }
+
+    addLangOptimized('Golang');     //function call
+    addLangOptimized('Java');
+
+    //Edit the Values
+    const secondLang = document.querySelector('li:nth-child(2)');  //selecting 2nd child from list
+    //secondLang.innerHTML = "Mojo"  ---> Not optimized [here only change innerHTML]
+    //console.log(secondLang)
+    const newli = document.createElement('li');  // here we have created a full new element and replace it with older one
+    newli.textContent = "Mojo";
+    secondLang.replaceWith(newli);
+
+    //edit
+    const firstLang = document.querySelector('li:first-child') ; //selecting 1st child from list
+    firstLang.outerHTML = '<li>C#</li>';  //changing outer HTML
+
+    //remove
+    const lastLang = document.querySelector('li:last-child');     //selecting last child
+    lastLang.remove();   //   now last child is removed
+</script>
+</html>
